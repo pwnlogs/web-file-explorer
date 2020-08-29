@@ -76,14 +76,14 @@ function printTree($tree, $depth=0){
     global $indent;
     foreach($tree as $key => $value) {
         if (is_array($value)){
-            echo "<div class=\"dir\"><a class=\"dir-a entry\">" . str_repeat($indent, $depth) . "$key</a>\n";
+            echo "<div class=\"dir\"><a class=\"dir-a entry\">" . str_repeat($indent, $depth) . "&#128193; $key</a>\n";
             echo "<div class=\"dir-contents\" style=\"display: none;\">\n";
             printTree($value, $depth+1);
             echo "</div></div>\n";
         } else {
-            $filename = pathinfo($value)['basename'];
+            $filename = pathinfo($value)['filename'];
             $url = $base_url . substr($value, 2);
-            echo "<div class=\"file\"><a class=\"file-a entry\" name=\"$url\">" . str_repeat($indent, $depth) . "$filename</a></div>\n";
+            echo "<div class=\"file\"><a class=\"file-a entry\" name=\"$url\">" . str_repeat($indent, $depth) . "&#128196; $filename</a></div>\n";
         }
     }
 }
