@@ -31,13 +31,15 @@
         }
         .dir-a{
             background-color: #dbdbdb;
+            font-size: smaller;
         }
         .file-a{
             background-color: #f0f0f0;
+            font-size: smaller;
         }
         .entry{
             display: block;
-            padding: 10px;
+            padding: 5px;
             margin: 1px;
             white-space: nowrap;
         }
@@ -52,7 +54,6 @@
 <div class="browse">
 <div style="width:100%;display:table;">
 <?php
-$base_url = "http://localhost:9090/";
 $indent = "&nbsp;&nbsp;&nbsp;&nbsp;";
 function getDirContents($dir, &$tree) {
     $files = scandir($dir);
@@ -82,7 +83,7 @@ function printTree($tree, $depth=0){
             echo "</div></div>\n";
         } else {
             $filename = pathinfo($value)['filename'];
-            $url = $base_url . substr($value, 2);
+            $url = substr($value, 2);
             echo "<div class=\"file\"><a class=\"file-a entry\" name=\"$url\">" . str_repeat($indent, $depth) . "&#128196; $filename</a></div>\n";
         }
     }
